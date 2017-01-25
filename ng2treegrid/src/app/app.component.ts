@@ -14,15 +14,12 @@ export class AppComponent {
   subinititivesRows = [];
   all = [];
 
-  milestonesRow: milestoneRow;
-  subinititivesRow: subinitiativeRow;
-
   /**
    *
    */
   constructor() {
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 3; i++) {
       var subRoot = new subinitiative;
       this.key += 1;
 
@@ -90,7 +87,6 @@ export class AppComponent {
     }
   }
 
-
   public findNodeByKey(subinititives: subinitiative[], key) {
     try {
       if (subinititives && subinititives.length > 0) {
@@ -121,7 +117,7 @@ export class AppComponent {
           _display.name = subinititives[i].name;
           _display.key = subinititives[i].row.key;
           _display.rowVisibility = subinititives[i].row.dsiplayRow;
-          _display.level=subinititives[i].row.level;
+          _display.level = subinititives[i].row.level;
 
           this.all.push(_display)
 
@@ -131,7 +127,7 @@ export class AppComponent {
             _display.key = subinititives[i].milestones[j].row.key;
             _display.arrowVisibility = subinititives[i].milestones[j].row.displayArrow;
             _display.rowVisibility = subinititives[i].milestones[j].row.dsiplayRow;
-          _display.level=subinititives[i].milestones[j].row.level;
+            _display.level = subinititives[i].milestones[j].row.level;
             this.all.push(_display)
           }
 
@@ -157,7 +153,7 @@ export class AppComponent {
 
   public collaps(sub, collapsed) {
     try {
-      console.log('collapsed', sub)
+      console.log('collapsed', sub, collapsed)
 
       if (sub) {
         if (sub.milestones.length > 0) {
@@ -172,10 +168,15 @@ export class AppComponent {
           if (collapsed) {
             sub.subinititives[i].row.dsiplayRow = "table-row"
           }
-          else
+          else {
             sub.subinititives[i].row.dsiplayRow = "none"
+          }
 
-          this.collaps(sub.subinititives[i], collapsed);
+
+          if (!collapsed)
+            this.collaps(sub.subinititives[i], collapsed);
+          else
+            sub.subinititives[i].row.collapsed = true;
         }
       }
       else {
@@ -222,16 +223,6 @@ export class milestone {
   }
 }
 
-export class subinitiativeRow {
-  subinittive: subinitiative = new subinitiative;
-  row: Row = new Row;
-}
-
-export class milestoneRow {
-  milestone: milestone = new milestone;
-  row: Row = new Row;
-
-}
 
 export class Row {
 
@@ -241,5 +232,5 @@ export class Row {
   key: number = 0;
   treeLoaded: boolean = false;
   collapsed: boolean = false;
-  root:boolean=false;
+  root: boolean = false;
 }
