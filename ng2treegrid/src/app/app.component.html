@@ -1,3 +1,82 @@
-<h1>
-  {{title}}
-</h1>
+<div class="card-deck customCards customXXLargCards">
+
+  <div class="card card-1 card-block main-listing-card pad0">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-xs-8">
+          <h4 class="card-title mrgt10 uppercase"> Gantt Chart </h4>
+        </div>
+        <div class="col-xs-4">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 pad0">
+          <div class="table-responsive ">
+            <table class="table table-bordered customTable mrgb0 ganttChartTable">
+              <thead>
+                <tr>
+                  <th class="goldColor uppercase" width="23.25%" rowspan="2">object with key </th>
+                  <th class="goldColor uppercase" width="13.08%" rowspan="2"> level </th>
+                  <th class="goldColor" width="58.43%" colspan="12">
+                    <a (click)="previousYear()">
+                      <span class="left mrgr10"><i class="fa fa-caret-left" aria-hidden="true"></i></span>
+                    </a>
+                    2016
+                    <a (click)="nextYear()">
+                      <span class="right mrgl10"><i class="fa fa-caret-right" aria-hidden="true"></i></span>
+                    </a>
+                  </th>
+                  <th class="goldColor" width="5.35%" rowspan="2">Update Status</th>
+                </tr>
+
+                <tr rowspan="2" class="uppercase">
+
+
+                  <th class="goldColor" width="8.3%"> Jan</th>
+                  <th class="goldColor" width="8.3%"> Feb</th>
+                  <th class="goldColor" width="8.3%"> Mar</th>
+                  <th class="goldColor" width="8.3%"> APR</th>
+                  <th class="goldColor" width="8.3%"> May</th>
+                  <th class="goldColor" width="8.3%"> Jun</th>
+                  <th class="goldColor" width="8.3%"> Jul</th>
+                  <th class="goldColor" width="8.3%"> Aug</th>
+                  <th class="goldColor" width="8.3%"> Sep</th>
+                  <th class="goldColor" width="8.3%"> Oct</th>
+                  <th class="goldColor" width="8.3%"> Nov</th>
+                  <th class="goldColor" width="8.3%"> Dec</th>
+
+
+
+                </tr>
+
+              </thead>
+              <tbody>
+                 <tr *ngFor="let item of all; let i = index" [ngStyle]="{'display': item.rowVisibility}">
+
+                  <td (click)="toggleMe(item.key)" class="expandAction pointer" >
+                    <span [ngStyle]="{'visibility': item.arrowVisibility}" class="closed mrgr10"><i class="fa fa-caret-right" aria-hidden="true"></i></span>
+                    <span class="opened mrgr10">
+      
+                                        </span>  {{item.name}}
+                  </td>
+                  <td> {{item.level}}</td>
+                  <td colspan="12" class="padL0 padR0" style="overflow: hidden">
+ {{item.name}}
+
+</td>
+<td><img src="img/icons/update-status.png" /></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
